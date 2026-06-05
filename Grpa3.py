@@ -1,80 +1,43 @@
-# This problem gives you exposure to different use cases of if ... elif and else conditional structues.
+# Create a multi-functional program that performs different tasks based on the user input. The program should support the following tasks:
 
-#Part 1 - Only if
+#Permutation (permutation): Given a string s, print all the possible two-letter permutations(without repitition) of the letters in the string.
 
-#Part 2 - if ... else
 
-#Part 3 - if ... elif 
+task = input()
 
-# part 1 - If pattern
-word = "glow" # str
-continuous_tense = True # bool
-
-# part 2
-age = 5 # int
-is_member = True # bool
-
-# part 3
-
-color_code = "R" # str: valid values are R-red, G-green and B-blue
-
-time = "02 PM" # str, format:[2-digit hour][space][AM or PM]
-# Morning (6 AM - 12 PM) (including the start and excluding the end)
-# Afternoon (12 PM - 6 PM) 
-# Evening (6 PM - 12 AM)
-# Night (12 AM - 6 AM)
-
-# <eoi>
-
-# part 1 - basic if
-
-new_word = word # donot remove this line
-
-# remove the "ing" suffix from `new_word` if it is there
-if new_word.endswith("ing") :
-    new_word = new_word[:-3]
-
-# add the suffix "ing" to `new_word` if `continuous_tense` is True
-# write the whole if else block here
-if continuous_tense:
-    new_word = new_word + "ing"
-else:
-    new_word = new_word 
-
-# part 2 - If else pattern
-
-# age_group:str should be "Adult" or "Child" based on the age. assume age greater than or equal to 18 is adult.
-if age >=18:
-    age_group = "Adult"
-else:
-    age_group = "Child"
-
-# applicant_type:str should be age goup with the member status like "Adult Member" or "Child Non-member"
-# write the whole if else block
-if is_member:
-    applicant_type = age_group + " Member"
-else:
-    applicant_type = age_group + " Non-member"
-
-# part 3 if ... elif .. else
-
-# based on the value of `color_code` assign the `color` value in lower case and "black" if `color_code` is none of R, B and G
-
-if color_code == "R":
-    color = "red"
-elif color_code == "B":
-        color = "blue"
-elif color_code == "G":
-    color = "gree"
-else:
-    color = "black"
-
-is_time_valid = ... # bool: True if time is valid (should be ranging from 1 - 12 both including) else False 
-
-# time_in_hrs:int should have the time in 24 hrs format . Try to do this in a single expression
-time_in_hrs = ...
-
-# time_of_day:str should have the time of the day as Morning, etc.. use "Invalid" if not withing the acceptable range
-
-# write your code here
+if task == "permutation":
+    s = input()
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if i != j:
+                print(s[i] + s[j])
+elif task == "sorted_permutation":
+    s = input()
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if i != j and s[i] < s[j]:
+                print(s[i] + s[j] )
+            
+elif task == "repeat_the_repeat":
+    n = int(input()) 
+    for i in range(n):
+        for j in range(1, n+1):
+            print(j, end='')
+        print() 
+elif task =="repeat_incrementally":
+    n = int(input())
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(j, end='')
+        print()
+        
+elif task == "increment_and_decrement":
+    n = int(input()) 
+    for i in range(1, n+1):
+        for j in range(1, i+1):
+            print(j, end='')
+        for j in range(i-1, 0, -1):
+            print(j, end='')
+        print()
+                
 

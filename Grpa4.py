@@ -1,71 +1,85 @@
-# You are tasked with creating a multi-purpose application that performs various operations based on user input. The application should take the operation name from the input and execute the corresponding task.
+# You are tasked with writing a program that can handle various tasks based on the input. The first line of the input represents the task to be performed. The possible tasks are:
 
-#The operations your application should support are as follows:
-
-#Odd number checker: Check whether the input number is odd.
-#Name: odd_num_check
-#Inputs: number:int
-#Output: "yes" if the number is odd, "no" otherwise.
-#Perfect square checker: Check whether the input number is a perfect square.
-#Name: perfect_square_check
-#Inputs: number:int
-#Output: "yes" if the number is a perfect square, "no" otherwise.
-#Vowel checker: Check if a string has a vowel in it.
-#Name: vowel_check
-#Inputs: text:str
-#Output: "yes" if the string contains a vowel, "no" otherwise.
-#Divisibility checker: Check if a number is divisible by 2 or 3.
-#Name: divisibility_check
-#Inputs: number:int
-#Output: "divisible by 2" if the number is divisible by 2, "divisible by 3" if divisible by 3, "divisible by 2 and 3" if divisible by both, "not divisible by 2 and 3" otherwise.
-#Palindrominator: Takes a string and joins it with the same string reversed. Eg. "cal" -> "calac".
-#Name: palindrominator
-#Inputs: text:str
-#Output: string representing the input string joined with its reverse(the last character should not be repeated twice)
-#Simple interest calculator with inputs with a higher interest rate if long term.
-#Name: simple_interest
-#Inputs: principal_amount:int, n_years:int (number of years)
-#Output: Simple interest with a 5% interest rate if less than 10 years, else 8%. Round the result to integer using round function.
-#If the operation name is not any of the above print "Invalid Operation".
+#factors - Find the factors of a number n (including 1 and itself) in ascending order.
+#find_min - Take n numbers from the input and print the minimum number.
+#prime_check - Check whether a given number is prime or not.
+#is_sorted - Check if all characters of the given string from input are in alphabetical order. Print the output as "True" or "False" accordingly.
+#any_true - Take n numbers from input and check if any of the numbers are divisible by 3. Print the output as "True" or "False" accordingly.
+#manhattan - Take inputs directions such as "UP", "DOWN", "LEFT" and "RIGHT" from the input until the input is "STOP". Assume you are starting from (0,0) in a cartesian coordinate. Find the Manhattan distance between the starting point and the ending point by following the steps in the cartesian plane.
+#Write a program to solve these tasks. Use loops where necessary.
 
 
 
-operation = input().strip()
+# this is to ensure that you cannot use the built in any, all and min function for this exercise but you can use it in the OPPEs.
+any = None 
+all = None
+min = None 
 
-if operation == "odd_num_check":
-    number = int(input())
-    print("yes" if number % 2 != 0 else "no")
+task = input()
 
-elif operation == "perfect_square_check":
-    number = int(input())
-    if number < 0:
-        print ("no")
-    else:
-        root = int(number ** 0.5)
-        print("yes" if root * root == number else "no")
-        
-elif operation == "vowel_check":
-    text = input().lower()
-    vowels = "aeiou"
-    print("yes" if any(ch in vowels for ch in text) else "no")
+
+if task == "factors":
+    n = int(input())
+    for i in range(1, n+1):
+        if n % i == 0:
+            print(i)
+            
+elif task == "find_min":
+    n = int(input())
+    min_val = int(input())
+    for i in range(n - 1):
+        num = int(input())
+        if num < min_val:
+            min_val = num 
+    print(min_val)
     
-elif operation == "divisibility_check":
-    number = int(input())
-    if number % 2 == 0 and number % 3 == 0:
-        print("divisible by 2 and 3")
-    elif number % 2 == 0:
-        print("divisible by 2")
-    elif number % 3 == 0:
-        print("divisible by 3")
+elif task == "prime_check":
+    n = int(input())
+    is_prime = True 
+    if n <= 1:
+        is_prime = False 
     else:
-        print("not divisible by 2 and 3")
-        
-elif operation == "simple_interest":
-    principal_amount = int(input())
-    n_years = int(input())
-    rate = 0.05 if n_years < 10 else 0.08
-    simple_interest = principal_amount * rate * n_years
-    print(round(simple_interest))
-else:
-    print("Invalid operation") 
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                is_prime = False 
+                break 
+    print("True" if is_prime else "False")
+    
+elif task == "is_sorted":
+    s = input()
+    is_sorted = True 
+    for i in range(len(s) - 1):
+        if s[i] > s[i + 1]:
+            is_sorted = False
+            break 
+    print("True" if is_sorted else "False") 
+    
+elif task == "any_true":
+    n = int(input()) 
+    any_divisible = False 
+    for i in range(n):
+        num = int(input()) 
+        if num % 3 == 0:
+            any_divisible = True 
+            break 
+    print("True" if any_divisible else "False")
+    
+elif task == "manhattan":
+    x, y = 0, 0
+    while True:
+        direction = input()
+        if direction == "STOP":
+            break 
+        if direction == "UP":
+            y += 1 
+        elif direction == "DOWN":
+            y -= 1 
+        elif direction == "LEFT":
+            x -= 1 
+        elif direction == "RIGHT":
+            x += 1 
+    manhattan_distance = abs(x) + abs(y) 
+    print(manhattan_distance)
+    
+    
     
