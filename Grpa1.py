@@ -1,29 +1,31 @@
-# Solve the below tasks related to Numbers.
+# Solve all the below tasks related to variables.
 
-#Tasks 1 to 3 - building up Arithemetic expression
-#Tasks 4 and 5 - floating point arithemetic
-#Tasks 6 and 7 - modulo and floor division
+#This exercise gives you practice in working with variables.
 
-a = 5
-b = 6
-price, discount_percent = 80, 5.75
-total_mins = 470
-# <eoi>
+#Note: Do not take input or print output as they are taken care by the suffix code(evaluator).
 
-output1 = a+b # int: sum of a and b
-output2 = 2*(a+b) # int: twice the sum of a and b
-output3 = abs(a-b) # int: absolute difference between a and b
-output4 = abs(a+b - a*b) # int: absolute difference between sum and product of a and b
+x1 = input()
+x2 = input()
+y1 = input()
+y2 = input()
+y3 = input()
+z = input()
 
-# Find discounted price given price and discount_percent
-# input variables : price: int, discount_percent: float
-discounted_price = price-(discount_percent/100*price) # float
+# swap the values of `x1` and `x2`
+x1, x2 = x2, x1
 
-# Round the discounted_price
-rounded_discounted_price = round(price-(discount_percent/100*price))  # int
+# do a circular swap of `y1`, `y2` and `y3`  like y1 = y2, y2 = y3, y3 = y1 
+y1, y2, y3 = y2, y3, y1
+# create a new variable `a` with the value of `z`
+a = z
 
-# Find hrs and mins given the total_mins
-# input variables : total_mins
-hrs = total_mins//60 # int: hint: think about floor division operator
-mins = total_mins%60 # int
+# delete the variable `z`
+del z
+
+print(x1)
+print(x2)
+print(y1)
+print(y2)
+print(y3)
+print(a)
 

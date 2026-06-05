@@ -1,28 +1,15 @@
-# Solve all the below tasks related to relational and logical operators.
+#Assign text that are given in the comments "as is" without the space after the "#" to the corresponding variable names in the template.
 
-# This exercise gives you practice in building up boolean expressions.
+#Note: There are no inputs to this question, you only have to print the things that are given in the comments in each line
 
-# Sample inputs (# note: The values given in the prefix code(grey) will be changed by the autograder according to the testcase while running them.
-a = 5
+# A single quote ' and a double quote "
+output1 = " A single quote ' and a double quote \" "
 
-price1, discount1 = 50, 4 # for offer1
-price2, discount2 = 60, 8 # for offer2
+# A forward slash / and a backward slash \
+output2 = " A forward slash / and a backward slash \\ "
 
-# Assume discount is given in percentages
+# Three single quotes ''' and three double quotes """
+output3 = " Three single quotes ''' and three double quotes \"\"\" "
 
-# <eoi>
-
-output1 = a>=5  # bool: True if a greater than or equal to 5
-
-output2 = a%5==0  # bool: True if a is divisible by 5
-
-output3 = a%2!=0 and a<10 # bool: True if a is odd number less than 10
-
-output4 = a%2!=0 and -10<a<10 # bool: True if a is an odd number within the range -10 and 10
-
-output5 = (len(str(abs(a)))%2==0) and (len(str(abs(a)))<=10)   # bool: True if a has even number of digits but not more than 10 digits
-
-is_offer1_cheaper = (discount1/100)*price1 > (discount2/100)*price2 # bool: True if the offer1 is strictly cheaper
-
-
-
+# Double forward slash // and Double backward slash \\
+output4 = " Double forward slash // and Double backward slash \\\\ "

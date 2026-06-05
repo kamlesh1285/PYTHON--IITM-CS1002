@@ -1,33 +1,71 @@
-# Solve all the below tasks related to string concatenation, repeatition and substring check in strings.
+# You are tasked with creating a multi-purpose application that performs various operations based on user input. The application should take the operation name from the input and execute the corresponding task.
 
-# Sample inputs (# note: The values given in the prefix code(grey) will be changed by the autograder according to the testcase while running them.
-word1 = "Wingardium" # str
-word2 = "Leviyosa" # str
-word3 = "Silver" # str
-sentence = "Learning python is fun"
-n1 = 6 # int
-n2 = 4 # int
-# <eoi>
+#The operations your application should support are as follows:
 
-output1 = f"{word1} {word2} " # str: join word1 and word2 with space in between
+#Odd number checker: Check whether the input number is odd.
+#Name: odd_num_check
+#Inputs: number:int
+#Output: "yes" if the number is odd, "no" otherwise.
+#Perfect square checker: Check whether the input number is a perfect square.
+#Name: perfect_square_check
+#Inputs: number:int
+#Output: "yes" if the number is a perfect square, "no" otherwise.
+#Vowel checker: Check if a string has a vowel in it.
+#Name: vowel_check
+#Inputs: text:str
+#Output: "yes" if the string contains a vowel, "no" otherwise.
+#Divisibility checker: Check if a number is divisible by 2 or 3.
+#Name: divisibility_check
+#Inputs: number:int
+#Output: "divisible by 2" if the number is divisible by 2, "divisible by 3" if divisible by 3, "divisible by 2 and 3" if divisible by both, "not divisible by 2 and 3" otherwise.
+#Palindrominator: Takes a string and joins it with the same string reversed. Eg. "cal" -> "calac".
+#Name: palindrominator
+#Inputs: text:str
+#Output: string representing the input string joined with its reverse(the last character should not be repeated twice)
+#Simple interest calculator with inputs with a higher interest rate if long term.
+#Name: simple_interest
+#Inputs: principal_amount:int, n_years:int (number of years)
+#Output: Simple interest with a 5% interest rate if less than 10 years, else 8%. Round the result to integer using round function.
+#If the operation name is not any of the above print "Invalid Operation".
 
-output2 = f"{word1[:4]}-{word2[-4:]} " # str: join first four letters of word1 and last four letters of word 2 with a hyphen "-" in between
 
-output3 = f"{word3} {n1} " # str: join the word3 and n1 with a space in between
 
-output4 = "-"*50 # str: just the hypen "-" repeated 50 times
+operation = input().strip()
 
-output5 = "-"*n2 # str: just the hypen "-" repeated n2 times
+if operation == "odd_num_check":
+    number = int(input())
+    print("yes" if number % 2 != 0 else "no")
 
-output6 = str(n1)*n2 # str: repeat the number n1, n2 times
-
-are_all_words_equal = word1==word2==word3 # bool: True if all three words are equal
-
-is_word1_comes_before_other_two = word1<word2 and word1<word2 # bool: True if word1 comes before word2 and word3 assume all words are different
-
-has_h = "h" in word1.lower()  # bool: True if word1 has the letter h
-
-ends_with_a = word1.lower().endswith("a").lower() # bool: True if word1 ends with letter a or A
-
-has_the_word_python = "python" in sentence.lower().split() # bool: True if the sentence has the word python
-
+elif operation == "perfect_square_check":
+    number = int(input())
+    if number < 0:
+        print ("no")
+    else:
+        root = int(number ** 0.5)
+        print("yes" if root * root == number else "no")
+        
+elif operation == "vowel_check":
+    text = input().lower()
+    vowels = "aeiou"
+    print("yes" if any(ch in vowels for ch in text) else "no")
+    
+elif operation == "divisibility_check":
+    number = int(input())
+    if number % 2 == 0 and number % 3 == 0:
+        print("divisible by 2 and 3")
+    elif number % 2 == 0:
+        print("divisible by 2")
+    elif number % 3 == 0:
+        print("divisible by 3")
+    else:
+        print("not divisible by 2 and 3")
+        
+elif operation == "simple_interest":
+    principal_amount = int(input())
+    n_years = int(input())
+    rate = 0.05 if n_years < 10 else 0.08
+    simple_interest = principal_amount * rate * n_years
+    print(round(simple_interest))
+else:
+    print("Invalid operation") 
+    
